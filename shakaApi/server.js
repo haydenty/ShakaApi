@@ -1,15 +1,3 @@
-// var express = require('express'),
-//     users = require('../routes/users');
-//
-// var app = express();
-//
-// //End points
-// app.get('/users', users.getAllUsers);
-// app.get('/users/:id', users.getUserById);
-//
-// app.listen(3000);
-// console.log('Listening on port 3000...');
-
 var express = require('express');
 var bodyParser = require('body-parser');
 

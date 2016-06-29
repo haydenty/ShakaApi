@@ -1,6 +1,5 @@
-
 {
-    "name": "Shaka Api",
+    "name": "Shaka_Api",
     "description": "This is the Api for Shaka.",
     "version": "0.0.1",
     "private": true,

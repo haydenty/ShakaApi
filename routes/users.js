@@ -1,9 +1,24 @@
-var repo = require('../repositories/usersRepo.js')
+var MongoClient = require('mongodb').MongoClient;
+var constants = require('../shakaApi/constants.js');
+
 var users = {
     getAllUsers: function(req, res) {
-        //res.json([{name:'Bob'}, {name:'Steve'}]);
-        repo.getAllUsers().then(console.log('we'));
-        res.json(repo.getAllUsers());
+        MongoClient.connect(constants.dbConnection, function(err, db) {
+            if (err) {
+                console.log("Unable to connect to the db");
+            } else {
+                var collection = db.collection('users');
+                collection.find().toArray(function(err, users) {
+                    if (!err) {
+                        res.json(users);
+                    } else {
+                        console.log('Error trying to getAllUsers!');
+                        res.json({});
+                    }
+                    db.close();
+                });
+            }
+        });
     },
     getFriends: function(req, res) {
         res.json([{

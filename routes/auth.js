@@ -1,3 +1,4 @@
+//TODO replace fake data with DB calls
 var jwt = require('jwt-simple');
 
 var auth = {
@@ -23,6 +24,46 @@ var auth = {
         res.json({
           status : 401,
           message : 'Invalid credentials!!'
+        });
+      }
+    },
+    register: function(req, res){
+      if(req.body.username !== 'jon' && req.body.username != ''){ //TODO: check for white space/remove it
+         if(req.body.email !== 'jon@gmail.com'){ //TODO: validate that it is a valid email
+           if(req.body.pass === req.body.verPass)
+           {
+             if(req.body.pass.len >= 6){ //TODO: what else do I want to check length and contains upper and lower and special char
+               //TODO: create user
+               res.json({
+                 token : genToken(username),
+                 message : 'register success'
+               });
+             }
+             else{
+               res.json({
+                 status: 401,
+                 message: 'Make sure your password contains upper and lower case, 6 characters long, and has at least one specail character.'
+               });
+             }
+           }
+           else {
+             res.json({
+               status: 401,
+               message:'Passwords don\'t match.'
+             });
+           }
+         }
+         else {
+           res.json({
+             status: 401,
+             message: 'Invalid email.'
+           });
+         }
+      }
+      else {
+        res.json({
+          status: 401,
+          message: 'Username already taken.'
         });
       }
     }

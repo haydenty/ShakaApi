@@ -63,7 +63,7 @@ var users = {
                             } else {
                                 callback({
                                     userId: result.ops[0]._id
-                                })
+                                });
                             }
                             db.close();
                         });
@@ -124,6 +124,6 @@ var users = {
             }
         });
     }
-}
+};
 
 module.exports = users;

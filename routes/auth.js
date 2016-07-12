@@ -71,7 +71,7 @@ var auth = {
             });
         }
     }
-}
+};
 
 //------------------------ Private Methods-------------------------------------
 function genToken(user) {

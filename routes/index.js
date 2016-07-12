@@ -19,6 +19,6 @@ router.get('/api/v1/users', users.getAllUsers);
 
 router.post('/api/v1/drops/', drops.createDrop);
 router.get('/api/v1/drops/', drops.getAllDrops);
-//router.get('/api/v1/drops/:id', drops.getDropsForUser);
+router.get('/api/v1/drops/:id', drops.getDropsForUser);
 
 module.exports = router;

@@ -1,10 +1,10 @@
 var MongoClient = require('mongodb').MongoClient;
 var constants = require('../shakaApi/constants.js');
-var collection = db.collection('drops');
 
 var drops = {
         createDrop: function(req, res) {
             MongoClient.connect(constants.dbConnection, function(err, db) {
+              var collection = db.collection('drops');
                 if (!err) {
                     collection.insert(req.body, function(error, result) { //example of db error handling
                         if (error) {
@@ -31,6 +31,7 @@ var drops = {
         },
         getAllDrops: function(req, res) {
             MongoClient.connect(constants.dbConnection, function(err, db) {
+              var collection = db.collection('drops');
                 if (!err) {
                     collection.find().toArray(function(error, drops) {
                         if (!error) {
@@ -59,6 +60,7 @@ var drops = {
             //TODO: privacy- should these be public always
             var userId = req.params.id;
             MongoClient.connect(constants.dbConnection, function(err, db) {
+              var collection = db.collection('drops');
                     if (!err) {
                         var query = {
                             _id: {
